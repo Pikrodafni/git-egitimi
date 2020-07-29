@@ -1,0 +1,117 @@
+Git GUİ (Graphical User Interface) komut satırı olmadan git kullanım arayüzü
+Git CMD command arayüzü
+Git Bash Linux benzeri arayüz
+
+Tercihim: Git Bash
+-> git --version       # Git'in kaçıncı versiyonu olduğunu gösterir.
+-> git config --list   # Yapılandırılmış ayarları gösterir
+-> git config --global user.name "Orkun Alkan" # isim düzenleme
+-> git config --global user.email ".....@gmail.com" # email düzenleme
+
+-> pwd # komutu bulunulan dizini gösterir.
+-> ls # komutu o dizinde gidilebilicek diğer dizinleri gösterir.
+-> cd DizinAdı # dersek cd den sonra gelen dizinin içine gider
+-> ls -a # gizli dosyaları da görmek için kullanılır.
+-> cd .. # komutu dizinde geri gitmek için kulanılır.
+-> mkdir dizinadı # komutu ile bulunduğumuz dizin içine yeni klasör oluşturabiliyoruz.
+-> touch dosya.jpg # ile uzantısını belirterek istediğimiz dosyayı oluşturabiliyoruz.
+-> vi dos.txt # ile seçilen dosyaya vi ile girip işlem yapabiliriz.
+-> vi içerisinde düzenleme tuşu i içine yazdıktan sonra çıkış için ESC
+ardından iki nokta : sonra write yaptıysak w yazıp çıkmak için wq.
+
+-> subl dos.txt # ile dosya içerisine bakabiliyoruz ama bash de olmadı o yüzden cat dos.txt kullanınca o da gösteriyor
+-> rm dos.txt # komutu (remove) ile dosya silinebilir.
+-> rm -r ile tüm dizin siliniyor.
+-> masaüstüne dizin oluşturduk ardından orayı repository yapmak için dizin içine cd dizin ile girip # git init # yazıyoruz git komutlarının çalışmasını sağlar.
+-> git status # komutu bulunduğumuz klasörde git init yaptıktan sonra klasör içindeki dosyaların durumunu belirtir untracked/tracked
+-> bu dosyaların durumunu tracked yani değiştirilebilir yapmak için       # git add dizinadi.txt # şeklinde dosyaları ekleyebiliyoruz.
+-> untracked haline geri döndürmek içinse # git rm --cached dizinadi.txt 
+-> git add . # komutu bütün klasörü indexlenmek amacıyla station area'ya gönderir
+-> git commit -m "initial commit" # dosyayı commit etmek için özel isim sürüm ismi tarzı " " arasına belirtilir.
+-> git log # ile commit edilenler ekrana yazdırılabilir
+-> git log --oneline # commit edilen logların tek satırda daha düzgün görülmesini sağlar
+-> eğer ki git add yapıldıktan sonra dosya üstünde vi dosadi.txt üzerinde bir oynama yapılırsa git status modified olarak gösterir tekrar add edilmesi lazım
+
+---------------------------------------------------------------------
+|			      TERMİNAL				    |
+---------------------------------------------------------------------
+| HP@LAPTOP-ROR33P3R MINGW64 ~/Desktop/workarea (master)	    |
+| $ git log --oneline						    |
+| 								    |
+| 05ceaef (HEAD -> master) html ve css düzenlendi		    |
+| dcbbd6d style.css olustu					    |
+| 18d15c7 html oluşturuldu					    |
+| 7c770cb ilk commit						    |
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+HP@LAPTOP-ROR33P3R MINGW64 ~/Desktop/workarea (master)
+$ git reset dcbbd6d --hard
+
+NOTE: git reset idneyse --hard # komutu kesin dönüş sonraki versiyonlar yok olur
+
+NOTE: git reset idneyse --soft # state area ya taşır tamamen yok etmez commitlersek geri gelir.
+
+NOTE: git revert # ile yapılan değişikliği silebiliriz
+
+NOTE: git commit --amend -m "degişiklik yapıldı" # commit başlığında değişiklik yapmak için kullanılır
+
+NOTE: git commit --amend ile bir önceki commit içine add yapmayı unuttuğunuz dosyayı ekleyebiliriz şöyle ki a dosyası commit edildi fakat biz a ve b klasörünü commit edicektik git commit --amend ile en son ki commit içine b yi de atarız
+------------------------------------------------------------------------
+NOTE: Branch -> farklı konularda güncelleme yapılıyorsa örnek front-end ve back-end 2 ayrı brench oluşturulur ve güncellemeler o brenchlerin üzerinden yapılır.
+
+-> git branch "dal-1" # Yeni branch oluşturma.
+-> git branch -a # branchleri listelemeye yarar.
+-> git checkout "dal-1" # branch değişmeye yarar.
+-> git checkout -b feature-1 # yeni branch oluşturup o branch üstüne geçer.
+
+NOTE: aynı dallar gibi hangi branch içindeyken yeni branch oluşturursak onun üstünde ilerliyoruz.
+
+-> git branch -d dal-1 # komutu ile branch silebiliyoruz büyük D ile silmeye zorlayabiliriz
+-> git merge feature # komutu ile branchleri birleştirebiliriz.
+-> git push https://github.com/Pikrodafni/git-egitimi.git master        # komutu ile klasörleri github'a yollayabiliyoruz.
+-> git remote add origin https://github.com/Pikrodafni/git-egitimi.git    # komutu ile git repository'sinin kısayolunu ekleyebiliyoruz.
+-> git clone link.git # ile publicde paylaşılan projeleri bilgisayara indirebiliyoruz.
+
+
+NOTE: FORK başkasının projesini çalışmak için github'a almak.
+NOTE: Pull request ile de o kişiye yapılan değişiklikleri gönderip kabul edip etmeyeceğine bakabiliyoruz.
+NOTE: FETCH ile github üzerinde projede değişiklik olduğunda kendi bilgisayarımızdaki çalışma alanımıza indirebiliyoruz.
+
+-> git fetch origin # dosyaları indirme
+-> git merge origin master # dosyaları merge etme birleştirme
+-> git pull origin master # direk birleştirme fetch neden yapılır yerine göre tahminimce.
+-> git .gitignore # eğer bir projede kullanıcı bilgileri veya benzeri bilgileri sakladığımız bir şey varsa public'de gözükmesini engellemek için kullanırız.Proje başında oluşturulmalıdır.
+-> touch .gitignore # saklanacak dosyalar için gitignore oluşturduk.
+-> .gitignore içine saklamak istediğimiz dosyaları uzantılarıyla yazıyoruz örnek : dosya.txt
+-> dizin saklamak içinse dizin/ yazıyoruz.(mkdir ile oluşturulan dizin)
+-> dizin/* # bütün dosyaları saklamak
+-> !dizin/deneme.php # deneme.php'yi algılanmasını sağlar.
+
+NOTE: Git Readme # Add Readme diyerek readme oluşturuyoruz.
+
+başlık için  #     # 
+orta başlık  #     ##
+küçük başlık #    ######
+kalın yazar  #    **bold** 
+_italik yamak için   #   ** merhaba _italik_**
+koddan alıntı 'ile   #   'echo "git egitimi":'
+kişiden alıntı almak #   >alıntıdır
+link koymak için     #   [isim](linkadresi)
+resim koymak için    #   ![git egitimi](git.jpg)
+liste için           #   -liste elemanı 
+tablo oluşturma için #   |baslık 1|baslik 2|baslık 3|
+			 |--------|
+			 |icerik 1|
+sola ortaya ve sağa dayalı için     #  :as  :orta:  sa:
+
+NOTE: Stash a dosyasında çalışırken işimiz bitmeden b içinde çalışmamız gerekiyor a yı saklamak için stash b bitince commit ederiz.
+
+-> git stash save "a.js düzenlendi" # stash'de saklamak
+-> git stash list  # stashleri gösterir.
+-> git stash show -p iddeğeri # id sırayla 0 1 2 en eskisi 2 dir üstüne koyulur
+-> git stash drop (isteğe bağlı olarak id 0 1 girilebilir drop sonrası)
+#sadece drop 0 indexini siler 
+-> git stash pop # 0 indexli id alanına geri gelir
+-> git config --global alias.st status # git st git status yerine geçer
+-> git checkout -- yazi.txt # son yapılan değişikliği geri alma
+-> git diff #varolan değişiklikleri terminalde göstermeye yarar.
